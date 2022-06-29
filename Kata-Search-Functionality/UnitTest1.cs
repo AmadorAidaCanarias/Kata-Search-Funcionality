@@ -47,9 +47,13 @@ namespace Kata_Search_Functionality {
             };
         }
 
-        public List<string> Search(string empty)
+        public List<string> Search(string searchValue)
         {
-            throw new NotImplementedException();
+            if (searchValue.Length == 0)
+            {
+                return new List<string>();
+            }
+            return null;
         }
     }
 }
