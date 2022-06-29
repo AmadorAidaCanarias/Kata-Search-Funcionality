@@ -18,6 +18,15 @@ namespace Kata_Search_Functionality {
             
             foundCities.Count.Should().Be(0);
         }
+
+        [Test]
+        public void should_return_cities_begin_Va_when_send_Va_search_string() {
+            List<string> foundCities = citySearch.Search("Va");
+
+            foundCities.Count.Should().Be(2);
+            foundCities.Contains("Valencia").Should().BeTrue();
+            foundCities.Contains("Vancouver").Should().BeTrue();
+        }
     }
 
     public class CitySearch {
