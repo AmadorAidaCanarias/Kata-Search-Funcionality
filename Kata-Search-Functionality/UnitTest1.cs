@@ -68,8 +68,8 @@ namespace Kata_Search_Functionality {
             };
             List<string> foundCities = citySearch.Search("*");
 
-            foundCities.Count.Should().Be(1);
-            desiredCities.Equals(foundCities).Should().BeTrue();
+            foundCities.Count.Should().Be(desiredCities.Count);
+            desiredCities.All(city => foundCities.Contains(city)).Should().BeTrue();
         }
     }
 
@@ -113,7 +113,8 @@ namespace Kata_Search_Functionality {
         {
             var startsWith = country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase);
             var contains = country.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase);
-            return startsWith || contains;
+            var isAsterisk = searchValue.Equals("*");
+            return startsWith || contains || isAsterisk;
         }
     }
 }
