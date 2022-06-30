@@ -79,7 +79,7 @@ namespace Kata_Search_Functionality {
             {
                 return new List<string>();
             }
-            return cities.Where(country => country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            return cities.Where(country => country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase) || country.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase)).ToList();
         }
     }
 }
