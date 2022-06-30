@@ -102,19 +102,16 @@ namespace Kata_Search_Functionality {
 
         public List<string> Search(string searchValue)
         {
-            if (searchValue.Length == 0)
-            {
-                return new List<string>();
-            }
             return cities.Where(country => MatchSearchValue(searchValue, country)).ToList();
         }
 
         private static bool MatchSearchValue(string searchValue, string country)
         {
+            var notEmpty = !string.IsNullOrEmpty(searchValue);
             var startsWith = country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase);
             var contains = country.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase);
             var isAsterisk = searchValue.Equals("*");
-            return startsWith || contains || isAsterisk;
+            return notEmpty && (startsWith || contains || isAsterisk);
         }
     }
 }
