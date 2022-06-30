@@ -2,7 +2,7 @@ using FluentAssertions;
 
 namespace Kata_Search_Functionality {
     public class Tests {
-        
+
         private CitySearch citySearch;
 
         [SetUp]
@@ -11,11 +11,10 @@ namespace Kata_Search_Functionality {
         }
 
         [Test]
-        public void should_return_empty_list_when_search_string_fewer_2_character()
-        {
+        public void should_return_empty_list_when_search_string_fewer_2_character() {
 
             List<string> foundCities = citySearch.Search("");
-            
+
             foundCities.Count.Should().Be(0);
         }
 
@@ -77,8 +76,7 @@ namespace Kata_Search_Functionality {
 
         private readonly List<string> cities;
 
-        public CitySearch()
-        {
+        public CitySearch() {
             cities = new List<string>()
             {
                 "Paris",
@@ -100,13 +98,13 @@ namespace Kata_Search_Functionality {
             };
         }
 
-        public List<string> Search(string searchValue)
-        {
-            return cities.Where(country => MatchSearchValue(searchValue, country)).ToList();
+        public List<string> Search(string searchValue) {
+            return cities
+                .Where(country => MatchSearchValue(searchValue, country))
+                .ToList();
         }
 
-        private static bool MatchSearchValue(string searchValue, string country)
-        {
+        private static bool MatchSearchValue(string searchValue, string country) {
             var notEmpty = !string.IsNullOrEmpty(searchValue);
             var startsWith = country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase);
             var contains = country.Contains(searchValue, StringComparison.InvariantCultureIgnoreCase);
