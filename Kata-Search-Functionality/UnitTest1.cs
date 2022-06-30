@@ -36,6 +36,14 @@ namespace Kata_Search_Functionality {
             foundCities.Contains("Valencia").Should().BeTrue();
             foundCities.Contains("Vancouver").Should().BeTrue();
         }
+
+        [Test]
+        public void should_return_cities_contains_ape_when_send_ape_search_string() {
+            List<string> foundCities = citySearch.Search("ape");
+
+            foundCities.Count.Should().Be(1);
+            foundCities.Contains("Budapest").Should().BeTrue();
+        }
     }
 
     public class CitySearch {
