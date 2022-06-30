@@ -44,6 +44,33 @@ namespace Kata_Search_Functionality {
             foundCities.Count.Should().Be(1);
             foundCities.Contains("Budapest").Should().BeTrue();
         }
+
+        [Test]
+        public void should_return_all_cities_when_send_asterisk_string() {
+            var desiredCities = new List<string>()
+            {
+                "Paris",
+                "Budapest",
+                "Skopje",
+                "Rotterdam",
+                "Valencia",
+                "Vancouver",
+                "Amsterdam",
+                "Vienna",
+                "Sydney",
+                "New York City",
+                "London",
+                "Bangkok",
+                "Hong Kong",
+                "Dubai",
+                "Rome",
+                "Istanbul"
+            };
+            List<string> foundCities = citySearch.Search("*");
+
+            foundCities.Count.Should().Be(1);
+            desiredCities.Equals(foundCities).Should().BeTrue();
+        }
     }
 
     public class CitySearch {
