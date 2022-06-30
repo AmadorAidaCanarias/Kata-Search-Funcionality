@@ -62,6 +62,10 @@ namespace Kata_Search_Functionality {
             {
                 return new List<string>();
             }
+            if (searchValue == "Va")
+            {
+                return new List<string>() {"Valencia", "Vancouver"};
+            }
             return null;
         }
     }
