@@ -27,6 +27,15 @@ namespace Kata_Search_Functionality {
             foundCities.Contains("Valencia").Should().BeTrue();
             foundCities.Contains("Vancouver").Should().BeTrue();
         }
+
+        [Test]
+        public void should_return_cities_begin_Va_when_send_VA_search_string() {
+            List<string> foundCities = citySearch.Search("VA");
+
+            foundCities.Count.Should().Be(2);
+            foundCities.Contains("Valencia").Should().BeTrue();
+            foundCities.Contains("Vancouver").Should().BeTrue();
+        }
     }
 
     public class CitySearch {
@@ -62,9 +71,8 @@ namespace Kata_Search_Functionality {
             {
                 return new List<string>();
             }
-            if (searchValue == "Va")
-            {
-                return new List<string>() {"Valencia", "Vancouver"};
+            if (searchValue == "Va") {
+                return new List<string>() { "Valencia", "Vancouver"};
             }
             return null;
         }
