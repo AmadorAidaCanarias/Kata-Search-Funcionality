@@ -71,10 +71,7 @@ namespace Kata_Search_Functionality {
             {
                 return new List<string>();
             }
-            if (searchValue.Equals("Va", StringComparison.InvariantCultureIgnoreCase)) {
-                return new List<string>() { "Valencia", "Vancouver"};
-            }
-            return null;
+            return cities.Where(country => country.StartsWith(searchValue, StringComparison.CurrentCultureIgnoreCase)).ToList();
         }
     }
 }
